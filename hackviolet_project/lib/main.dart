@@ -4,54 +4,69 @@ void main() {
   runApp(const TabBarDemo());
 }
 
-class TabBarDemo extends StatelessWidget {
+class TabBarDemo extends StatefulWidget {
   const TabBarDemo({super.key});
+
+  @override
+  _TabBarDemoState createState() => _TabBarDemoState();
+}
+
+class _TabBarDemoState extends State<TabBarDemo> {
+  int _selectedIndex = 0;
+
+  // This list holds the widget for each tab.
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Tab: Something',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Tab: Feed',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Tab: Profile',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+  ];
+
+  // This function is triggered when a BottomNavigationBarItem is tapped.
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: const TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.apps)),
-                Tab(icon: Icon(Icons.account_circle)),
-              ],
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Rate My Frat'),
+        ),
+        body: Center(
+          // Display the widget corresponding to the selected tab.
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Organizations',
             ),
-            title: const Text('Rate My Frat'),
-          ),
-          body: const TabBarView(
-            children: [
-              Icon(Icons.home),
-              Icon(Icons.apps),
-              Icon(Icons.account_circle),
-            ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Topics',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.apps),
-                label: 'About',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: 'Profile',
-              ),
-            ],
-          ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.verified_user_rounded),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.purple[800],
+          onTap: _onItemTapped, // Define the onTap function
         ),
       ),
     );
   }
 }
-
 // class BottomNavBar extends StatelessWidget {
 //   const BottomNavBar({super.key});
 
