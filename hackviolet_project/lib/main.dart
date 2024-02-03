@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'postPage.dart'; // Import the PostPage widget
+
 
 void main() {
   runApp(const TabBarDemo());
@@ -11,18 +13,60 @@ class TabBarDemo extends StatefulWidget {
   _TabBarDemoState createState() => _TabBarDemoState();
 }
 
+final List<String> orgList = [
+  "Alpha Epsilon Pi",
+  "Kappa Alpha",
+  "Mu Pi Sigma",
+  "French Club",
+  "DINGHY"
+];
+List<String> filteredList = [];
+
 class _TabBarDemoState extends State<TabBarDemo> {
   int _selectedIndex = 0;
 
   // This list holds the widget for each tab.
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Tab: Something',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Tab: Feed',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    // Text(
+    //   'Tab: Orgs',
+    //   style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    // ),
+    Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.apartment),
+              title: Text('Alpha Epsilon Pi'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.apartment),
+              title: Text('Kappa Alpha'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.apartment),
+              title: Text('Mu Pi Sigma'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.apartment),
+              title: Text('French Club'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.apartment),
+              title: Text('DINGHY'),
+            ),
+          ),
+        ],
+      ),
     ),
     Text(
       'Tab: Profile',
@@ -38,16 +82,120 @@ class _TabBarDemoState extends State<TabBarDemo> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Initially display all items
+    filteredList = orgList;
+  }
+
+  void _filterList(String query) {
+    if (query.isNotEmpty) {
+      List<String> tempList = [];
+
+      for (String item in orgList) {
+        if (item.toLowerCase().contains(query.toLowerCase())) {
+          tempList.add(item);
+        }
+      }
+      setState(() {
+        filteredList = tempList;
+      });
+    } else {
+      setState(() {
+        filteredList = orgList;
+      });
+    }
+  }
+
+  Widget _buildSearchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        onChanged: (value) {
+          // Filter the list with each text change
+          _filterList(value);
+        },
+        decoration: InputDecoration(
+            hintText: 'Search...',
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            )),
+      ),
+    );
+  }
+
+// Bottom Nav Bar tabs
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Rate My Frat'),
         ),
-        body: Center(
-          // Display the widget corresponding to the selected tab.
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
+        body: () {
+          // Decision logic for what to display based on selected index
+          switch (_selectedIndex) {
+            case 0:
+              return Column(
+                // Organization tab content
+                children: [
+                  _buildSearchBar(),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredList.length,
+                      itemBuilder: (context, index) => Card(
+                        child: ListTile(
+                          leading: Icon(Icons.apartment),
+                          title: Text(filteredList[index]),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            case 1:
+              return const Center(
+                  // Profile tab content
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          CircleAvatar(
+                            backgroundColor: Colors.black,
+                            minRadius: 60.0,
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              backgroundImage: NetworkImage(
+                                  'https://upload.wikimedia.org/wikipedia/commons/1/15/EasternGraySquirrel_GAm.jpg'),
+                            ),
+                          )
+                        ]),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Bobby Shazam',
+                      style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ]));
+            case 2:
+            return MaterialApp(home: PostPage(),
+            
+            );
+
+            
+            default:
+              return Text('Select a tab');
+          }
+        }(),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -58,49 +206,17 @@ class _TabBarDemoState extends State<TabBarDemo> {
               icon: Icon(Icons.verified_user_rounded),
               label: 'Profile',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.temple_buddhist_rounded),
+              label: 'TEST',
+            ),
+
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.purple[800],
-          onTap: _onItemTapped, // Define the onTap function
+          onTap: _onItemTapped,
         ),
       ),
     );
   }
 }
-// class BottomNavBar extends StatelessWidget {
-//   const BottomNavBar({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BottomNavigationBar(
-//       items: const [
-//         BottomNavigationBarItem(
-//           icon: Icon(Icons.home),
-//           label: 'Topics',
-//         ),
-//         BottomNavigationBarItem(
-//           icon: Icon(Icons.apps),
-//           label: 'About',
-//         ),
-//         BottomNavigationBarItem(
-//           icon: Icon(Icons.account_circle),
-//           label: 'Profile',
-//         ),
-//       ],
-//       fixedColor: Colors.deepPurple[200],
-//       onTap: (int idx) {
-//         switch (idx) {
-//           case 0:
-//             // do nothing
-//             break;
-//           case 1:
-//             Navigator.pushNamed(context, '/about');
-//             break;
-//           case 2:
-//             Navigator.pushNamed(context, '/profile');
-//             break;
-//         }
-//       },
-//     );
-//   }
-// }
