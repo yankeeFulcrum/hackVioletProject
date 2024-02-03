@@ -44,11 +44,11 @@ class PostPage extends StatelessWidget {
           controlAffinity: ListTileControlAffinity.leading,
           children: <Widget>[
             ListTile(title: Text('Hated it.'),
-            subtitle: Text('Romey Rome'),),
+            subtitle: Text('Romey Rome'), leading:Text('5/5')),
             ListTile(title: Text('Loved it so much hazing!!'),
-            subtitle: Text('Brian')),
+            subtitle: Text('Brian'), leading:Text('2/5')),
             ListTile(title: Text('Super fun parties!'),
-            subtitle: Text('w00p')),
+            subtitle: Text('w00p'), leading:Text('1.5/5')),
           ],
         ),
         
