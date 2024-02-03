@@ -22,7 +22,7 @@ class TabBarDemo extends StatelessWidget {
                 Tab(icon: Icon(Icons.account_circle)),
               ],
             ),
-            title: const Text('Tabs Demo'),
+            title: const Text('Rate My Frat'),
           ),
           body: const TabBarView(
             children: [
