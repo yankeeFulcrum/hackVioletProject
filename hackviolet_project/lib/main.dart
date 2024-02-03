@@ -17,18 +17,18 @@ class TabBarDemo extends StatelessWidget {
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.home)),
+                Tab(icon: Icon(Icons.apps)),
+                Tab(icon: Icon(Icons.account_circle)),
               ],
             ),
             title: const Text('Tabs Demo'),
           ),
           body: const TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              Icon(Icons.home),
+              Icon(Icons.apps),
+              Icon(Icons.account_circle),
             ],
           ),
         ),
