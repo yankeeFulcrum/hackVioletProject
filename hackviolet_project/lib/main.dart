@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'orgPage.dart'; 
-
+import 'orgPage.dart';
 
 void main() {
   runApp(const TabBarDemo());
 }
-
-
 
 class TabBarDemo extends StatefulWidget {
   const TabBarDemo({super.key});
@@ -14,7 +11,6 @@ class TabBarDemo extends StatefulWidget {
   @override
   _TabBarDemoState createState() => _TabBarDemoState();
 }
-
 
 final List<String> orgList = [
   "Alpha Epsilon Pi",
@@ -34,14 +30,8 @@ Map<String, List<String>> orgComments = {
     "Really fun, I felt so safe the whole time!",
     "Good vibes :)"
   ],
-  "Mu Phi Sigma": [
-    "Nice people overall.",
-    "Never going back."
-  ],
-  "French Club": [
-    "3/10 kinda weird.",
-    "Mid."
-  ],
+  "Mu Phi Sigma": ["Nice people overall.", "Never going back."],
+  "French Club": ["3/10 kinda weird.", "Mid."],
   "DINGHY": [
     "Think twice before you go.  Super sketchy vibes.",
     "Be careful around Steve."
@@ -50,10 +40,10 @@ Map<String, List<String>> orgComments = {
 
 List<String> orgPics = [
   "https://images.squarespace-cdn.com/content/v1/5f2c061211042073569ab086/1599165536953-0GB80EKBDDP9MP22RLJJ/cofa-01+%282%29.png",
-  "https://kauga.com/wp-content/uploads/2022/10/Kappa-Alpha-Order-Flag.jpg",  
+  "https://kauga.com/wp-content/uploads/2022/10/Kappa-Alpha-Order-Flag.jpg",
   "https://lh3.googleusercontent.com/proxy/1I8COfdz6378rf9eZdxD6GvhU6LNg1qZp2qb8ClJxK-9Sj3nyYMMcJrhwPkd7ibZas_3qmPsYYHUpDDv2oZx3MohHehu89e-M30O78nO42HRj5s9sKrrIaTmnvZsLoH6lWC6hf1MzniB8WsPU8pQPWRCVK1I1G9XA5XJEPcOF_OCJ9yTE1vUCW2kLHJMzJqNADBNY5GALg",
   "https://cf.ltkcdn.net/kids/images/orig/316639-2022x1348-french-flag-in-paris.jpg",
-  "https://www.hashtagboatlife.com/wp-content/uploads/2021/01/rigid-inflatable-dinghy-powerful.jpg",  
+  "https://www.hashtagboatlife.com/wp-content/uploads/2021/01/rigid-inflatable-dinghy-powerful.jpg",
 ];
 
 List<String> orgDescriptions = [
@@ -68,17 +58,16 @@ List<String> subDescription = [
   "A historically Jewish fraternity known for fostering leadership, brotherhood, and community service. Alpha Epsilon Pi emphasizes cultural, academic, and social development while promoting Jewish identity and values.",
   "Kappa Alpha Order is often celebrated for its emphasis on tradition, gentlemanly conduct, and a deep sense of loyalty and brotherhood. It aims to cultivate ethical leaders inspired by the virtues of chivalry and respect.",
   "A fraternity dedicated to the advancement of music and performing arts. Mu Phi Sigma aims to provide a supportive community for musicians and artists, fostering talent through collaboration and social engagement.",
-  "The German Club provides a cultural exchange platform, celebrating German heritage through social gatherings, cultural events, and language practice sessions. It's a social fraternity that unites members with an interest in German culture, traditions, and camaraderie.",
-  "A social fraternity for sailing enthusiasts and sea lovers. The Yacht Club organizes sailing events, regattas, and social gatherings, offering members a chance to explore the joys of yachting, learn nautical skills, and bond over shared maritime adventures."
-
+  "The French Club provides a cultural exchange platform, celebrating French heritage through social gatherings, cultural events, and language practice sessions. It's a social fraternity that unites members with an interest in French culture, traditions, and camaraderie.",
+  "A social fraternity for sailing enthusiasts and sea lovers. DINGHY organizes sailing events, regattas, and social gatherings, offering members a chance to explore the joys of dinghying, learn nautical skills, and bond over shared maritime adventures."
 ];
 
 List<String> orgRatings = [
   "3.5/5",
   "5/5",
   "4.1/5",
-  "2.9/5",
-  "1/5",
+  "2/5",
+  "1.5/5",
 ];
 
 class _TabBarDemoState extends State<TabBarDemo> {
@@ -135,17 +124,15 @@ class _TabBarDemoState extends State<TabBarDemo> {
     );
   }
 
-
-
 // Bottom Nav Bar tabs
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0x635380ff),
+          backgroundColor: Colors.deepPurple[400],
           title: const Text('Rate My Party'),
-        ), 
+        ),
         body: () {
           // Decision logic for what to display based on selected index
           switch (_selectedIndex) {

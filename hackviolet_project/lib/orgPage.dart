@@ -28,6 +28,7 @@ class OrgPage extends StatelessWidget {
         comments.containsKey(title) ? comments[title]! : [];
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple[400],
         title: Text(title),
       ),
       body: SingleChildScrollView(
