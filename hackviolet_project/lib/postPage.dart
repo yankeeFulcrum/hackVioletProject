@@ -36,7 +36,21 @@ class PostPage extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
             ),
+<<<<<<< HEAD
             // Add more widgets as needed ...
+=======
+            const ExpansionTile(
+          title: Text('Comments'),
+          leading: Icon(Icons.message),
+          controlAffinity: ListTileControlAffinity.leading,
+          children: <Widget>[
+            ListTile(title: Text('Hated it.'),
+            subtitle: Text('Romey Rome'), leading:Text('5/5')),
+            ListTile(title: Text('Loved it so much hazing!!'),
+            subtitle: Text('Brian'), leading:Text('2/5')),
+            ListTile(title: Text('Super fun parties!'),
+            subtitle: Text('w00p'), leading:Text('1.5/5')),
+>>>>>>> 712f9522698ec8b7f5642dd10a8aebcae925099f
           ],
         ),
       ),
