@@ -9,7 +9,7 @@ class TabBarDemo extends StatefulWidget {
   const TabBarDemo({super.key});
 
   @override
-  _TabBarDemoState createState() => _TabBarDemoState();
+  myApp createState() => myApp();
 }
 
 final List<String> orgList = [
@@ -70,7 +70,7 @@ List<String> orgRatings = [
   "1.5/5",
 ];
 
-class _TabBarDemoState extends State<TabBarDemo> {
+class myApp extends State<TabBarDemo> {
   int _selectedIndex = 0;
 
   // This function is triggered when a BottomNavigationBarItem is tapped.
