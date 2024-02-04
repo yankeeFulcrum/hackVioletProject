@@ -1,3 +1,11 @@
+/*
+Hackviolet 2024: Rate My Party
+Caiden Romero, Roscoe Lin, Minh-Thu Nguyen, Sidney Nguyen
+
+Some aspects of our code was based on the Flutter documentation, Fireship.io, and Shakleen Ishfar's Medium article.
+*/
+
+
 import 'package:flutter/material.dart';
 import 'orgPage.dart';
 
