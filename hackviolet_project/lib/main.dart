@@ -15,6 +15,7 @@ class TabBarDemo extends StatefulWidget {
   _TabBarDemoState createState() => _TabBarDemoState();
 }
 
+
 final List<String> orgList = [
   "Alpha Epsilon Pi",
   "Kappa Alpha",
@@ -61,6 +62,15 @@ List<String> orgDescriptions = [
   "Fraternity",
   "Social Org",
   "Social Org"
+];
+
+List<String> subDescription = [
+  "A historically Jewish fraternity known for fostering leadership, brotherhood, and community service. Alpha Epsilon Pi emphasizes cultural, academic, and social development while promoting Jewish identity and values.",
+  "Kappa Alpha Order is often celebrated for its emphasis on tradition, gentlemanly conduct, and a deep sense of loyalty and brotherhood. It aims to cultivate ethical leaders inspired by the virtues of chivalry and respect.",
+  "A fraternity dedicated to the advancement of music and performing arts. Mu Phi Sigma aims to provide a supportive community for musicians and artists, fostering talent through collaboration and social engagement.",
+  "The German Club provides a cultural exchange platform, celebrating German heritage through social gatherings, cultural events, and language practice sessions. It's a social fraternity that unites members with an interest in German culture, traditions, and camaraderie.",
+  "A social fraternity for sailing enthusiasts and sea lovers. The Yacht Club organizes sailing events, regattas, and social gatherings, offering members a chance to explore the joys of yachting, learn nautical skills, and bond over shared maritime adventures."
+
 ];
 
 List<String> orgRatings = [
@@ -158,6 +168,7 @@ class _TabBarDemoState extends State<TabBarDemo> {
                                 builder: (context) => OrgPage(
                                   title: filteredList[index],
                                   description: orgDescriptions[index],
+                                  subDescription: subDescription[index],
                                   imageUrl: orgPics[index],
                                   rating: orgRatings[index],
                                   comments: orgComments,

@@ -5,6 +5,7 @@ import 'dart:math';
 class OrgPage extends StatelessWidget {
   final String title;
   final String description;
+  final String subDescription;
   final String imageUrl;
   final String rating;
   final Map<String, List<String>> comments;
@@ -13,12 +14,13 @@ class OrgPage extends StatelessWidget {
     Key? key,
     required this.title,
     required this.description,
+    required this.subDescription,
     required this.imageUrl,
     required this.rating,
     required this.comments,
   }) : super(key: key);
 
-final randomNames = RandomNames(Zone.us);
+  final randomNames = RandomNames(Zone.us);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +37,19 @@ final randomNames = RandomNames(Zone.us);
             Image.network(imageUrl),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                description,
-                style: const TextStyle(fontSize: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    description,
+                    style: const TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    subDescription,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ],
               ),
             ),
             Padding(
@@ -51,27 +63,24 @@ final randomNames = RandomNames(Zone.us);
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                   ExpansionTile(
-              title: Text('Comments'),
-              leading: Icon(Icons.message),
-              controlAffinity: ListTileControlAffinity.leading,
-              children: <Widget>[
-                for (String comment in commentsList)
-                
-                    ListTile(
-                    
-                    title: Text(comment),
-                    subtitle: Text(randomNames.fullName()),
-                    leading: Text(Random().nextInt(5).toString() + '/5'))
-              
-                  
-                  ,
-                ],
-              ),
-          ]),
-        )],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ExpansionTile(
+                      title: Text('Comments'),
+                      leading: Icon(Icons.message),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      children: <Widget>[
+                        for (String comment in commentsList)
+                          ListTile(
+                              title: Text(comment),
+                              subtitle: Text(randomNames.fullName()),
+                              leading:
+                                  Text(Random().nextInt(5).toString() + '/5')),
+                      ],
+                    ),
+                  ]),
+            )
+          ],
         ),
       ),
     );
