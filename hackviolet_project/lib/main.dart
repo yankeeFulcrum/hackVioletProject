@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'orgPage.dart'; 
 
+
 void main() {
   runApp(const TabBarDemo());
 }
+
+
 
 class TabBarDemo extends StatefulWidget {
   const TabBarDemo({super.key});
@@ -122,14 +125,17 @@ class _TabBarDemoState extends State<TabBarDemo> {
     );
   }
 
+
+
 // Bottom Nav Bar tabs
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Rate My Frat'),
-        ),
+          backgroundColor: const Color(0x635380ff),
+          title: const Text('Rate My Party'),
+        ), 
         body: () {
           // Decision logic for what to display based on selected index
           switch (_selectedIndex) {
