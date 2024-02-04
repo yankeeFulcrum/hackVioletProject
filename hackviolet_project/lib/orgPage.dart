@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:random_name_generator/random_name_generator.dart';
+import 'dart:math';
 
 class OrgPage extends StatelessWidget {
   final String title;
@@ -7,7 +9,7 @@ class OrgPage extends StatelessWidget {
   final String rating;
   final Map<String, List<String>> comments;
 
-  const OrgPage({
+  OrgPage({
     Key? key,
     required this.title,
     required this.description,
@@ -15,6 +17,8 @@ class OrgPage extends StatelessWidget {
     required this.rating,
     required this.comments,
   }) : super(key: key);
+
+final randomNames = RandomNames(Zone.us);
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +53,25 @@ class OrgPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Comments',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8.0),
-                  for (String comment in commentsList)
-                    CommentWidget(comment: comment),
+                   ExpansionTile(
+              title: Text('Comments'),
+              leading: Icon(Icons.message),
+              controlAffinity: ListTileControlAffinity.leading,
+              children: <Widget>[
+                for (String comment in commentsList)
+                
+                    ListTile(
+                    
+                    title: Text(comment),
+                    subtitle: Text(randomNames.fullName()),
+                    leading: Text(Random().nextInt(5).toString() + '/5'))
+              
+                  
+                  ,
                 ],
               ),
-            ),
-          ],
+          ]),
+        )],
         ),
       ),
     );
