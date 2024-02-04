@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'postPage.dart'; // Import the PostPage widget
+import 'orgPage.dart'; 
 
 void main() {
   runApp(const TabBarDemo());
@@ -149,7 +149,7 @@ class _TabBarDemoState extends State<TabBarDemo> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PostPage(
+                                builder: (context) => OrgPage(
                                   title: filteredList[index],
                                   description: orgDescriptions[index],
                                   imageUrl: orgPics[index],
