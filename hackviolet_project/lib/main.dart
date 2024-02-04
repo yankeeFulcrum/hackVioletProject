@@ -148,6 +148,18 @@ class _TabBarDemoState extends State<TabBarDemo> {
                         child: ListTile(
                           leading: Icon(Icons.apartment),
                           title: Text(filteredList[index]),
+                          onTap: () {
+                            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostPage(
+                        title: filteredList[index],
+                        description: "Description for ${filteredList[index]}",
+                        // Add more data as needed
+                      ),
+                ),
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -186,11 +198,6 @@ class _TabBarDemoState extends State<TabBarDemo> {
                       ),
                     ),
                   ]));
-            case 2:
-            return MaterialApp(home: PostPage(),
-            
-            );
-
             
             default:
               return Text('Select a tab');
@@ -205,10 +212,6 @@ class _TabBarDemoState extends State<TabBarDemo> {
             BottomNavigationBarItem(
               icon: Icon(Icons.verified_user_rounded),
               label: 'Profile',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.temple_buddhist_rounded),
-              label: 'TEST',
             ),
 
           ],
